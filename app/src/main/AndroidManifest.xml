@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.karatascompany.pys3318">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icons8_checkmark_64"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity android:name=".UserSignUpActivity" />
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainFragmentActivity"
+            android:label="@string/app_name">
+
+        </activity>
+        <activity
+            android:name=".TaskActivity"
+            android:label="@string/title_activity_task"
+            android:parentActivityName=".MainFragmentActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.karatascompany.pys3318.MainFragmentActivity" />
+        </activity>
+        <activity
+            android:name=".fragments.TabbedTaskListFragment"
+            android:label="@string/title_activity_tabbed_task_list_fragment"
+            android:parentActivityName=".MainFragmentActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.karatascompany.pys3318.MainFragmentActivity" />
+        </activity>
+        <activity
+            android:name=".MyTaskDetailActivity"
+            android:label="@string/title_activity_my_task_detail"
+            android:parentActivityName=".MainFragmentActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.karatascompany.pys3318.MainFragmentActivity" />
+        </activity>
+        <activity
+            android:name=".ProjectEditActivity"
+            android:label="@string/title_activity_project_edit"
+            android:parentActivityName=".MainFragmentActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.karatascompany.pys3318.MainFragmentActivity" />
+        </activity>
+        <activity
+            android:name=".ProjectTaskDetailActivity"
+            android:label="@string/title_activity_project_task_detail"
+            android:parentActivityName=".TaskActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.karatascompany.pys3318.TaskActivity" />
+        </activity>
+        <activity
+            android:name=".InsertTaskActivity"
+            android:label="@string/title_activity_insert_task"
+            android:parentActivityName=".fragments.TabbedTaskListFragment"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.karatascompany.pys3318.fragments.TabbedTaskListFragment" />
+        </activity>
+
+        <service android:name=".firebase.FireBaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+        <activity
+            android:name=".UserSettingActivity"
+            android:label="@string/title_activity_user_setting"
+            android:parentActivityName=".MainFragmentActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.karatascompany.pys3318.MainFragmentActivity" />
+        </activity>
+        <activity android:name=".SendActivity" /> <!-- [START firebase_iid_service] -->
+        <service android:name=".firebase.FirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <!--
+          [END firebase_iid_service]    @string/title_activity_user_appointed_task_list
+
+          android:label="UserAppointedTaskListActivity"
+
+            android:parentActivityName=".MainFragmentActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.karatascompany.pys3318.MainFragmentActivity" />
+        -->
+        <activity android:name=".UserAppointedTaskListActivity" />
+        <activity android:name=".ManagementTotalCountActivity" />
+        <activity android:name=".fragments.MainTab3UserTaskRatingFragment"
+            tools:ignore="Instantiatable" />
+    </application>
+
+</manifest>

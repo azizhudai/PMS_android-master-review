@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/cardViewUserAppointedTask"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="8dp"
+
+    app:cardElevation="4dp"
+    app:contentPadding="4dp"
+    android:foreground="?selectableItemBackground"
+    android:clickable="false"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.karatascompany.pys3318.UserAppointedTaskListActivity"
+    tools:showIn="@layout/activity_user_appointed_task_list">
+    <!--android:backgroundTint="@color/colorGreen"!-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            android:id="@+id/progressBarResudualDays"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:progress="27"
+
+    android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+
+            android:progressTint="@color/colorRed"
+            android:layout_alignParentTop="true"
+
+            android:layout_alignStart="@+id/textViewTaskName"
+            android:layout_marginStart="15dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="5dp"
+            android:id="@+id/textViewProgressValue"
+            />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/textViewTaskName"
+            android:layout_width="3000dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewProjectName"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="7dp"
+
+            android:text="görev adını girdk"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textViewProjectName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+
+            android:layout_toLeftOf="@+id/textViewUserMail"
+            android:text="proje adı  "/>
+
+        <TextView
+            android:id="@+id/textViewUserMail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="12dp"
+            android:paddingLeft="4dp"
+            android:layout_marginStart="5dp"
+            android:text="kullanıcı maili"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:paddingTop="10dp"
+            android:id="@+id/textViewResidualTotalDays"
+            android:layout_below="@+id/textViewTaskName"/>
+
+        <RatingBar
+            android:id="@+id/ratingBarUserPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="235dp"
+            android:layout_below="@+id/textViewTaskName"
+            android:numStars="5"
+            android:stepSize="1"
+            android:paddingTop="10dp"
+            android:layout_alignStart="@+id/textViewTaskName"
+            android:layout_marginEnd="10dp"
+            android:paddingLeft="4dp"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_alignParentEnd="true"
+            />
+        <!--
+                <TextView
+                    android:id="@+id/textViewUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+
+                    android:layout_below="@+id/textViewTaskName"
+                    android:layout_toLeftOf="@+id/textViewMyTaskDate"
+                    android:text="kullanıcı adı  "/>!-->
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

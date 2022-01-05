@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "284510420432",
+    "firebase_url": "https://bitirmepys.firebaseio.com",
+    "project_id": "bitirmepys",
+    "storage_bucket": "bitirmepys.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284510420432:android:882d45746a5b6b7c",
+        "android_client_info": {
+          "package_name": "com.karatascompany.pys3318"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "284510420432-anjkk9nkk93f9tul4jhj9q3693kvmncs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPDG5xjNPRQcgmBNs3m3B-EJWD7anDtds"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

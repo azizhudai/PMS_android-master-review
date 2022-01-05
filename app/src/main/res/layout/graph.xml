@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/NoActionBar"
+    android:id="@+id/relativeLayoutGraphs"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_marginTop="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbarGraphs"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_alignParentTop="true"
+
+        android:layout_alignParentStart="true"
+        android:background="#4DB6AC">
+
+
+        <Spinner
+            android:id="@+id/spinnerGraphs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+
+            android:layout_marginEnd="21dp"
+            android:background="#ffffff"
+            android:gravity="end"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"></Spinner>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:layout_marginTop="50dp"
+        >
+        <com.github.mikephil.charting.charts.PieChart
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+
+            android:visibility="gone"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/pieChartProject"></com.github.mikephil.charting.charts.PieChart>
+
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChartProject"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:visibility="gone"
+           ></com.github.mikephil.charting.charts.BarChart>
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/linearLayoutUserRating"
+            android:layout_width="wrap_content"
+            android:background="#ffffff"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:padding="5dp"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textViewAverage"
+                        android:text=""/>
+
+                    <RatingBar
+
+                        android:layout_width="wrap_content"
+
+                        android:rating="2.72"
+                        android:isIndicator="true"
+                        android:focusable="false"
+                        android:id="@+id/averageUserTaskRating"
+                        android:clickable="false"
+                        android:progressTint="#dfbf13"
+                        android:background="#ffffff"
+                        android:layout_height="wrap_content"
+
+                        android:numStars="5"
+                      />
+
+
+
+
+
+
+
+
+                </LinearLayout>
+
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:background="#fffff1"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textViewFive"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="4dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingEnd="15dp"
+                                    android:text="10 Görev"
+                                    android:textColor="@color/common_google_signin_btn_text_light"
+                                    android:textSize="15sp" />
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:id="@+id/imageViewDetailFive"
+
+                                    android:src="@drawable/if_bullet_error_66701"
+                                    />
+
+
+                            </LinearLayout>
+
+
+                            <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
+                                android:id="@+id/textProgressBarFiveStars"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="10dp"
+                                app:rcBackgroundColor="@color/bb_tabletRightBorderDark"
+                                app:rcBackgroundPadding="10dp"
+                                app:rcMax="100"
+
+                                app:rcProgressColor="@color/colorGreen"
+                                app:rcRadius="20dp"
+
+                                app:rcSecondaryProgressColor="#aae11f"
+
+                                app:rcTextProgressColor="#000000"
+                                app:rcTextProgressMargin="10dp"
+                                app:rcTextProgressSize="14sp" />
+
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:background="#fffff1"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textViewFour"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="4dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingEnd="15dp"
+                                    android:text="10 Görev"
+                                    android:textColor="@color/common_google_signin_btn_text_light"
+                                    android:textSize="15sp" />
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:id="@+id/imageViewDetailFour"
+
+                                    android:src="@drawable/if_bullet_error_66701"
+                                    />
+
+
+                            </LinearLayout>
+
+
+                            <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
+                                android:id="@+id/textProgressBarFourStars"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="10dp"
+                                app:rcBackgroundColor="@color/bb_tabletRightBorderDark"
+                                app:rcBackgroundPadding="10dp"
+                                app:rcMax="100"
+                                app:rcProgress="60"
+                                app:rcProgressColor="#bf911f"
+                                app:rcRadius="20dp"
+                                app:rcSecondaryProgress="65"
+                                app:rcSecondaryProgressColor="#bf914f"
+                                app:rcTextProgress="4 Yıldız"
+                                app:rcTextProgressColor="#000000"
+                                app:rcTextProgressMargin="10dp"
+                                app:rcTextProgressSize="14sp" />
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:background="#fffff1"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textViewThree"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="4dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingEnd="15dp"
+                                    android:text="13 Görev"
+                                    android:textColor="@color/common_google_signin_btn_text_light"
+                                    android:textSize="15sp" />
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:id="@+id/imageViewDetailThree"
+
+                                    android:src="@drawable/if_bullet_error_66701"
+                                    />
+
+
+                            </LinearLayout>
+
+
+                            <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
+                                android:id="@+id/textProgressBarThreeStars"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="10dp"
+                                app:rcBackgroundColor="@color/bb_tabletRightBorderDark"
+                                app:rcBackgroundPadding="10dp"
+                                app:rcMax="100"
+                                app:rcProgress="60"
+                                app:rcProgressColor="@color/colorPrimary"
+                                app:rcRadius="20dp"
+                                app:rcSecondaryProgress="65"
+                                app:rcSecondaryProgressColor="@color/colorPrimaryDark"
+                                app:rcTextProgress="3 Yıldız (20%)"
+                                app:rcTextProgressColor="@color/white"
+                                app:rcTextProgressMargin="10dp"
+                                app:rcTextProgressSize="14sp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:background="#fffff1"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textViewTwo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="4dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingEnd="15dp"
+                                    android:text="2 Görev"
+                                    android:textColor="@color/common_google_signin_btn_text_light"
+                                    android:textSize="15sp" />
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:id="@+id/imageViewDetailTwo"
+
+                                    android:src="@drawable/if_bullet_error_66701"
+                                    />
+
+
+                            </LinearLayout>
+
+
+                            <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
+                                android:id="@+id/textProgressBarTwoStars"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="10dp"
+                                app:rcBackgroundColor="@color/colorGray"
+                                app:rcBackgroundPadding="10dp"
+                                app:rcMax="100"
+                                app:rcProgress="60"
+                                app:rcProgressColor="#a14f6f"
+                                app:rcRadius="20dp"
+                                app:rcSecondaryProgress="64"
+                                app:rcSecondaryProgressColor="#a14f6f"
+                                app:rcTextProgress="2 Yıldız (20%)"
+                                app:rcTextProgressColor="@color/white"
+                                app:rcTextProgressMargin="10dp"
+                                app:rcTextProgressSize="14sp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:background="#fffff1"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textViewOne"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="4dp"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingEnd="15dp"
+                                    android:text="1 Görev"
+                                    android:textColor="@color/colorGray"
+                                    android:textSize="15sp" />
+                                <ImageView
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
+                                    android:id="@+id/imageViewDetailOne"
+
+                                    android:src="@drawable/if_bullet_error_66701"
+                                    />
+
+
+                            </LinearLayout>
+
+
+                            <com.akexorcist.roundcornerprogressbar.TextRoundCornerProgressBar
+                                android:id="@+id/textProgressBarOneStars"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginTop="10dp"
+                                app:rcBackgroundColor="@color/bb_tabletRightBorderDark"
+                                app:rcBackgroundPadding="10dp"
+                                app:rcMax="100"
+                                app:rcProgress="60"
+                                app:rcProgressColor="@color/colorRed"
+                                app:rcRadius="20dp"
+                                app:rcSecondaryProgress="65"
+                                app:rcSecondaryProgressColor="#a15a16"
+                                app:rcTextProgress="1 Yıldız (5%)"
+                                app:rcTextProgressColor="@color/white"
+                                app:rcTextProgressMargin="10dp"
+                                app:rcTextProgressSize="14sp" />
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+
+
+                </ScrollView>
+
+
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#fffff1"
+                    android:padding="10dp">
+                    <TextView
+
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/PROGRESS_BAR"
+
+
+                        android:layout_alignLeft="@id/PROGRESS_BAR"
+                        android:layout_alignRight="@id/PROGRESS_BAR"
+                        android:layout_alignTop="@id/PROGRESS_BAR"
+                        android:text="5 Yıldız"
+                        android:textAlignment="center"
+                        android:textStyle="bold|italic" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10 Tane"/>
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:id="@+id/imageViewDetail5"
+
+                        android:layout_alignRight="@+id/PROGRESS_BAR"
+                        android:src="@drawable/if_bullet_error_66701"
+                        />
+                    <ProgressBar
+                        android:id="@+id/PROGRESS_BAR"
+
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+
+                        android:progress="80"
+                        android:progressTint="@color/colorGreen"
+                        android:maxHeight="35dip"
+                        android:minHeight="35dip"
+
+                        android:minWidth="10dip"
+                        android:maxWidth="10dip"
+                        android:layout_weight="1"
+                        android:scrollbarSize="50dp" />
+
+
+
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                   >
+
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/PROGRESS_BAR_FOUR"
+
+                        android:layout_alignLeft="@id/PROGRESS_BAR_FOUR"
+                        android:layout_alignRight="@id/PROGRESS_BAR_FOUR"
+                        android:layout_alignTop="@id/PROGRESS_BAR_FOUR"
+                        android:text="4 Yıldız"
+                        android:textAlignment="center"
+                        android:textStyle="bold|italic" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2 Tane"/>
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:id="@+id/imageViewDetail4"
+
+                        android:layout_alignRight="@+id/PROGRESS_BAR_FOUR"
+                        android:src="@drawable/if_bullet_error_66701"
+                        />
+
+                    <ProgressBar
+                        android:id="@+id/PROGRESS_BAR_FOUR"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:progressTint="@color/colorPrimary"
+                        android:layout_height="wrap_content"
+                        android:progress="10"
+
+                        android:maxHeight="35dip"
+                        android:minHeight="35dip"
+
+                        android:minWidth="10dip"
+                        android:maxWidth="10dip"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:scrollbarSize="50dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/PROGRESS_BAR_THREE"
+
+                        android:layout_alignLeft="@id/PROGRESS_BAR_THREE"
+                        android:layout_alignRight="@id/PROGRESS_BAR_THREE"
+                        android:layout_alignTop="@id/PROGRESS_BAR_THREE"
+                        android:text="3 Yıldız"
+                        android:textAlignment="center"
+                        android:textStyle="bold|italic" />
+
+                    <ProgressBar
+                        android:id="@+id/PROGRESS_BAR_THREE"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+
+                        android:progress="10"
+                        android:progressTint="@color/colorAccent"
+                        android:maxHeight="35dip"
+                        android:minHeight="35dip"
+
+                        android:minWidth="10dip"
+                        android:maxWidth="10dip"
+
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2 Tane"/>
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:id="@+id/imageViewDetail3"
+
+                        android:layout_alignRight="@+id/PROGRESS_BAR_THREE"
+                        android:src="@drawable/if_bullet_error_66701"
+                        />
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/PROGRESS_BAR_TWO"
+
+                        android:layout_alignLeft="@id/PROGRESS_BAR_TWO"
+                        android:layout_alignRight="@id/PROGRESS_BAR_TWO"
+                        android:layout_alignTop="@id/PROGRESS_BAR_TWO"
+                        android:text="2 Yıldız"
+                        android:textAlignment="center"
+                        android:textStyle="bold|italic" />
+
+                    <ProgressBar
+                        android:id="@+id/PROGRESS_BAR_TWO"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_weight="1"
+                        android:maxHeight="35dip"
+
+                        android:maxWidth="10dip"
+                        android:minHeight="35dip"
+
+
+                        android:minWidth="10dip"
+                        android:progress="10"
+                        android:progressTint="#efef13" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2 Tane"/>
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:id="@+id/imageViewDetail2"
+
+                        android:layout_alignRight="@+id/PROGRESS_BAR_TWO"
+                        android:src="@drawable/if_bullet_error_66701"
+                        />
+
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/PROGRESS_BAR_ONE"
+
+                        android:layout_alignLeft="@id/PROGRESS_BAR_ONE"
+                        android:layout_alignRight="@id/PROGRESS_BAR_ONE"
+                        android:layout_alignTop="@id/PROGRESS_BAR_ONE"
+                        android:text="1 Yıldız"
+                        android:textAlignment="center"
+                        android:textStyle="bold|italic" />
+
+                    <ProgressBar
+                        android:id="@+id/PROGRESS_BAR_ONE"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+
+                        android:progress="40"
+                        android:progressTint="@color/colorRed"
+                        android:maxHeight="35dip"
+                        android:minHeight="35dip"
+
+                        android:minWidth="10dip"
+                        android:maxWidth="10dip"
+
+                        android:scrollbarSize="50dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2 Tane"/>
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:id="@+id/imageViewDetail1"
+
+                        android:layout_alignRight="@+id/PROGRESS_BAR_ONE"
+                        android:src="@drawable/if_bullet_error_66701"
+                        />
+
+
+
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

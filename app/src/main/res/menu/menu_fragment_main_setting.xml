@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_user_appointed_task_list"
+        app:showAsAction="never"
+        android:title="Kullanıcı Atamış olan Görev Listesi"
+        android:orderInCategory="100">
+    </item>
+<item android:id="@+id/action_user_management_detail_count"
+    app:showAsAction="never"
+    android:title="Yönetilen İşlemler"
+    android:orderInCategory="100">
+
+</item>
+    <item
+        android:id="@+id/action_user_setting"
+        app:showAsAction="never"
+        android:title="Kullanıcı Ayarları"
+        android:orderInCategory="100">
+    </item>
+    <item
+        android:id="@+id/action_user_sign_out"
+        app:showAsAction="never"
+        android:title="Çıkış Yap"
+        android:orderInCategory="100"
+        ></item>
+
+</menu>

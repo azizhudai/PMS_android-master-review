@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="#fffdd1"
+    tools:context="com.karatascompany.pys3318.MyTaskDetailActivity"
+    tools:showIn="@layout/activity_my_task_detail">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+       >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#123456"
+                android:textSize="16dp"
+                android:text="Açıklama"/>
+            <TextView
+                android:id="@+id/textViewMyTaskStatement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:text="proje yönetim görev açıkalma sadasdasdsdadasd"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#123456"
+                android:textSize="16dp"
+                android:text="Oluşturma"/>
+            <TextView
+                android:id="@+id/textViewByUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:text="by aziz karatazasdş"/>
+
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="24dp"
+            app:cardBackgroundColor="#3fb399"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+
+
+                >
+
+
+                <TextView
+                    android:id="@+id/yLabelStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="2018"
+                    android:textSize="24dp"
+                    android:textColor="#ffffff"
+                    android:layout_marginLeft="60dp"
+                    />
+
+                <TextView
+                    android:id="@+id/mLabelStart"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:text="Jun"
+                    android:textSize="24dp"
+                    android:textColor="#ffffff"
+                    android:background="#206757"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/dLabelStart"
+                    android:layout_width="180dp"
+                    android:layout_height="150dp"
+                    android:text="3"
+                    android:textSize="56dp"
+                    android:textColor="#206757"
+                    android:background="#d3d3d3"
+                    android:gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/eLabelStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sun"
+                    android:textSize="18dp"
+                    android:textColor="#206757"
+                    android:layout_marginTop="-40dp"
+                    android:layout_marginLeft="60dp"/>
+
+
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="24dp"
+            app:cardBackgroundColor="#1facfc"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:gravity="center"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/yLabelEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="50dp"
+                    android:text="2018"
+                    android:textColor="#ffffff"
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:id="@+id/mLabelEnd"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#1faaaa"
+                    android:gravity="center"
+                    android:text="Jun"
+                    android:textColor="#ffffff"
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:id="@+id/dLabelEnd"
+                    android:layout_width="2000dp"
+                    android:layout_height="150dp"
+                    android:background="#d3d3d3"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="#206757"
+                    android:textSize="56dp" />
+
+                <TextView
+                    android:id="@+id/eLabelEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="-40dp"
+                    android:text="Sun"
+                    android:textColor="#206757"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>
