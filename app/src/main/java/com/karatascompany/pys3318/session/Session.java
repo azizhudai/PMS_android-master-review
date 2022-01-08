@@ -10,25 +10,36 @@ import android.preference.PreferenceManager;
 
 public class Session {
 
-    private SharedPreferences prefs;
+    private final SharedPreferences prefs;
 
-    public Session(Context context){
-        prefs = PreferenceManager.getDefaultSharedPreferences(context);
-    }
-    public void setUserId (String userId){
-        prefs.edit().putString("userId",userId).apply();
-
-    }
-    public String getUserId(){
-        String userId = prefs.getString("userId","");
-        return userId;
+    public Session(Context context) {
+        prefs = context.getSharedPreferences("MyPrivatePrefApp", 0); //PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public void setUserMail(String userMail){
-        prefs.edit().putString("userMail",userMail).apply();
+    public void setUserId(String userId) {
+        prefs.edit().putString("userId", userId).apply();
     }
-    public String getUserMail(){
-        String userMail = prefs.getString("userMail","");
-        return userMail;
+
+    public String getUserId() {
+        return prefs.getString("userId", "");
+    }
+
+    public void setUserMail(String userMail) {
+        prefs.edit().putString("userMail", userMail).apply();
+    }
+
+    public String getUserMail() {
+        return prefs.getString("userMail", "");
+    }
+
+    public void removeSession(Context context) {
+        SharedPreferences mySPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.remove("MyPrivatePrefApp");
+        editor.apply();
+    }
+
+    public boolean checkSession() {
+        return !getUserId().isEmpty() && !getUserMail().isEmpty();
     }
 }

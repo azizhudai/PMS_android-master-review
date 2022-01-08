@@ -15,9 +15,8 @@ import android.widget.Toast;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 //import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.iid.FirebaseInstanceId;
+//import com.google.firebase.iid.FirebaseInstanceId;
 import com.karatascompany.pys3318.firebase.FirebaseInstanceIDService;
-import com.karatascompany.pys3318.firebase.PushNotifHttp;
 import com.karatascompany.pys3318.models.UserModel;
 import com.karatascompany.pys3318.models.UserTokenModel;
 import com.karatascompany.pys3318.remote.ApiUtils;
@@ -143,6 +142,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     private void doLogin(final String email, final String password) {
         progressDialog.setMessage("Giriş yapılıyor Bekleyin...");
+        progressDialog.setIcon(R.drawable.team_work);
         progressDialog.show();
 
         Call<UserModel> call = userService.login(email,password);
@@ -184,7 +184,7 @@ public class LoginActivity extends AppCompatActivity {
                                       //  UpdateTokenId(session.getUserId(),token_id);
 
                                         startActivity(intent);
-                                        Toast.makeText(LoginActivity.this,"Giriş Başarılı...",Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(LoginActivity.this,"Giriş Başarılı...",Toast.LENGTH_SHORT).show();
 
                                     /*    mFireStore.collection("Users").document(current_id).update(tokenMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override

@@ -3,7 +3,7 @@ package com.karatascompany.pys3318.firebase;
 import android.os.StrictMode;
 import android.util.Log;
 
-import com.google.firebase.iid.FirebaseInstanceId;
+//import com.google.firebase.iid.FirebaseInstanceId;
 //import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.squareup.okhttp.MediaType;
@@ -14,7 +14,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
+//import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 

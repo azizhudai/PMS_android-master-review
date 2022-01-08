@@ -1,10 +1,15 @@
 package com.karatascompany.pys3318;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -33,6 +38,7 @@ public class MainFragmentActivity extends AppCompatActivity {
     private Session session;
     //private FirebaseAuth mAuth;
     private UserService userService;
+    private ProgressDialog progressDialog;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -60,7 +66,13 @@ public class MainFragmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_fragment);
 
         session = new Session(this);
-      //  mAuth = FirebaseAuth.getInstance();
+
+        if (!session.checkSession()) {
+            startActivity(new Intent(MainFragmentActivity.this, LoginActivity.class));
+            finish();
+        }
+
+        //  mAuth = FirebaseAuth.getInstance();
         userService = ApiUtils.getUserService();
 
         mBottomBar = BottomBar.attach(this, savedInstanceState);
@@ -68,22 +80,7 @@ public class MainFragmentActivity extends AppCompatActivity {
             @Override
             public void onMenuTabSelected(int menuItemId) {
                 if (menuItemId == R.id.bottombarItemgraph) {
-                //    Bundle extras = getIntent().getExtras();
-                    //    int userId = extras.getInt("userId");
-                    //   String uid = String.valueOf(userId);
-                        GraphFragment fr = new GraphFragment();
-
-                  //  FragmentMainTabbedMyGraphsActivity frr = new FragmentMainTabbedMyGraphsActivity();
-
-                   /* FragmentTransaction transaction = getSupportFragmentManager()
-                            .beginTransaction();
-                   // Fragment newFragment = new Fragment1();
-                    transaction.add(R.id.frame, frr);
-                    transaction.addToBackStack(null);
-                    transaction.commit();//*/
-
-                    //  bundle.putString("userId",uid);
-                    //  fr.setArguments(bundle);
+                    GraphFragment fr = new GraphFragment();
                     getSupportFragmentManager().beginTransaction().replace(R.id.frame, fr).commit();
                 } else if (menuItemId == R.id.bottombarItemmyproject) {
                     MyProjectFragment fr = new MyProjectFragment();
@@ -116,7 +113,6 @@ public class MainFragmentActivity extends AppCompatActivity {
 
         BottomBarBadge unread;
         unread = mBottomBar.makeBadgeForTabAt(3, "#EF5350", 13);
-
 
      /*   mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -163,7 +159,7 @@ public class MainFragmentActivity extends AppCompatActivity {
 
         int i = item.getItemId();
 
-        if(i == R.id.action_user_appointed_task_list){
+        if (i == R.id.action_user_appointed_task_list) {
             Intent intent = new Intent(MainFragmentActivity.this, UserAppointedTaskListActivity.class);
             //intent.putExtra("userMail", session.getUserMail());
             startActivity(intent);
@@ -173,44 +169,45 @@ public class MainFragmentActivity extends AppCompatActivity {
             intent.putExtra("userMail", session.getUserMail());
             startActivity(intent);
         }
-        if(i== R.id.action_user_management_detail_count){
+        if (i == R.id.action_user_management_detail_count) {
             Intent intent = new Intent(MainFragmentActivity.this, ManagementTotalCountActivity.class);
             //intent.putExtra
             startActivity(intent);
         }
         if (i == R.id.action_user_sign_out) {
 
-          //  if (mAuth.getCurrentUser() != null) {
-           // mAuth.signOut();
+            //  if (mAuth.getCurrentUser() != null) {
+            // mAuth.signOut();
 
             Call<String> call = userService.RemoveTokenId(session.getUserId());
-                call.enqueue(new Callback<String>() {
-                    @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
+            call.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
 
-                        try {
-                            String result = response.body();
-                            if(result.equals("OK")){
-                                Toast.makeText(MainFragmentActivity.this, "Çıkış Başarılı", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(MainFragmentActivity.this, LoginActivity.class));
+                    try {
+                        String result = response.body();
+                        if (result.equals("OK")) {
+                            session.removeSession(getApplicationContext());
+                            Toast.makeText(MainFragmentActivity.this, "Çıkış Başarılı", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(MainFragmentActivity.this, LoginActivity.class));
 
-                            }else
-                                Toast.makeText(MainFragmentActivity.this, "ERR", Toast.LENGTH_SHORT).show();
-                        }catch (Exception e){
-                            Toast.makeText(MainFragmentActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(MainFragmentActivity.this, "ERR", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        Toast.makeText(MainFragmentActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 
-                        }
                     }
+                }
 
-                    @Override
-                    public void onFailure(Call<String> call, Throwable t) {
-                        Toast.makeText(MainFragmentActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    Toast.makeText(MainFragmentActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
 
-           //    }
+            //    }
         }
- return false;
+        return false;
     }
 
 

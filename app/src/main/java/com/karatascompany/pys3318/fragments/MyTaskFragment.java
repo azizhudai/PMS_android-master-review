@@ -1,7 +1,10 @@
 package com.karatascompany.pys3318.fragments;
 
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import com.google.android.material.snackbar.Snackbar;
@@ -26,6 +29,7 @@ import com.karatascompany.pys3318.session.Session;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,6 +51,7 @@ public class MyTaskFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
     public String userId;
     private Session session;
+    private ProgressDialog progressDialog;
 
     @Nullable
     @Override
@@ -75,7 +80,8 @@ public class MyTaskFragment extends Fragment implements SwipeRefreshLayout.OnRef
        //if(extras != null){
            if(userId != null){
 
-               LoadRecyclerViewMyTaskData(userId);
+               //LoadRecyclerViewMyTaskData(userId);
+               new AsyncGetMyTask().execute(userId);
                recyclerViewMyTask.setAdapter(customMyTaskMainAdepter);
                customMyTaskMainAdepter.setOnItemClickListener(MyTaskFragment.this);
                customMyTaskMainAdepter.notifyDataSetChanged();
@@ -88,6 +94,7 @@ public class MyTaskFragment extends Fragment implements SwipeRefreshLayout.OnRef
     private void LoadRecyclerViewMyTaskData(String userId) {
         Call<List<TaskModel>> call = userService.GetMyTask(userId);
         call.enqueue(new Callback<List<TaskModel>>() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onResponse(Call<List<TaskModel>> call, Response<List<TaskModel>> response) {
                 try {
@@ -123,6 +130,7 @@ public class MyTaskFragment extends Fragment implements SwipeRefreshLayout.OnRef
     public void onRefresh() {
 
         LoadRecyclerViewMyTaskData(userId);
+        new AsyncGetMyTask().execute(userId);
         yenileme_nesnesi_mytask.setRefreshing(false);
     }
 
@@ -130,7 +138,7 @@ public class MyTaskFragment extends Fragment implements SwipeRefreshLayout.OnRef
     public void onItemClick(int position) {
 
         TaskModel clickedItem = myTaskModels.get(position);
-        View parentLayout = getActivity().findViewById(android.R.id.content);
+        View parentLayout = requireActivity().findViewById(android.R.id.content);
 
         Intent intent = new Intent(getActivity(), MyTaskDetailActivity.class);
         //intent.putExtra("userId",userId);
@@ -156,6 +164,31 @@ public class MyTaskFragment extends Fragment implements SwipeRefreshLayout.OnRef
            this.taskModels = taskModels;
        }
    }
+
+    class AsyncGetMyTask extends AsyncTask<String, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setMessage("Veriler Listeleniyor. Bekleyin...");
+            progressDialog.show();
+            progressDialog.setIcon(R.drawable.team_work);
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(String... uid) {
+            LoadRecyclerViewMyTaskData(uid[0]);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void unused) {
+            progressDialog.dismiss();
+            super.onPostExecute(unused);
+        }
+    }
+
 }
 
 

@@ -1,11 +1,15 @@
 package com.karatascompany.pys3318.fragments;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +46,7 @@ import com.karatascompany.pys3318.session.Session;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,20 +58,21 @@ import retrofit2.Response;
 
 public class GraphFragment extends Fragment {
 
-    RelativeLayout relativeLayoutGraphs;
+    //RelativeLayout relativeLayoutGraphs;
     LinearLayout linearLayoutUserRating;
     private PieChart pieChart;
     private PieChart pieChartProject;
-    private float[] yData={5,10,15,30,40};
-    private String[] xData = {"sony","huavi", "LG","Appple","Samsung"};
+    private final float[] yData = {5, 10, 15, 30, 40};
+    private final String[] xData = {"sony", "huavi", "LG", "Appple", "Samsung"};
 
     UserService userService;
-    Session session; String userId;
+    Session session;
+    String userId;
 
     androidx.appcompat.widget.Toolbar myToolbar;
     Spinner mySpinner;
     ArrayAdapter<String> myAdepter;
-    private String[] iller={"Görev Durumu","Proje Gün Sayıları","Puan Analizi"};
+    private final String[] analizler = {"Görev Durumu", "Proje Gün Sayıları", "Puan Analizi"};
 
     /////////////////////
     private BarChart barChartProject;
@@ -75,95 +81,98 @@ public class GraphFragment extends Fragment {
 
     RatingBar averageUserTaskRating;
 
-    TextView textViewFive,textViewFour,textViewThree,textViewTwo,textViewOne,textViewAverage;
+    TextView textViewFive, textViewFour, textViewThree, textViewTwo, textViewOne, textViewAverage;
 
-    TextRoundCornerProgressBar textProgressBarFiveStars,textProgressBarFourStars,textProgressBarThreeStars,textProgressBarTwoStars,textProgressBarOneStars;
+    TextRoundCornerProgressBar textProgressBarFiveStars, textProgressBarFourStars, textProgressBarThreeStars, textProgressBarTwoStars, textProgressBarOneStars;
+    private ProgressDialog progressDialog;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-       View view = inflater.inflate(R.layout.graph,container,false);
+        View view = inflater.inflate(R.layout.graph, container, false);
 
-       userService = ApiUtils.getUserService();
-       session = new Session(getActivity());userId = session.getUserId();
-        getActivity().setTitle("Grafiklerim");
-       myToolbar = view.findViewById(R.id.toolbarGraphs);
-       mySpinner = view.findViewById(R.id.spinnerGraphs);
-       // android.support.v7.app.ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        userService = ApiUtils.getUserService();
+        session = new Session(requireActivity());
+        userId = session.getUserId();
+        requireActivity().setTitle("Grafiklerim");
+        myToolbar = view.findViewById(R.id.toolbarGraphs);
+        mySpinner = view.findViewById(R.id.spinnerGraphs);
+        // android.support.v7.app.ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
 
 //        actionBar.hide();
 
-          mySpinner.setAdapter(myAdepter);
+        mySpinner.setAdapter(myAdepter);
         pieChartProject = view.findViewById(R.id.pieChartProject);
         barChartProject = view.findViewById(R.id.barChartProject);
 
         linearLayoutUserRating = view.findViewById(R.id.linearLayoutUserRating);
 
         pieChartProject.setVisibility(View.VISIBLE);
-            mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    Toast.makeText(getActivity(), mySpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+        mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getActivity(), mySpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
 
-                    if(i==0) {
-//mySpinner.getSelectedItem().toString().equals("Görev Durumu")
-                        barChartProject.setVisibility(View.GONE);
-                        linearLayoutUserRating.setVisibility(View.GONE);
-                        pieChartProject.setVisibility(View.VISIBLE);
-                        addDataTask();
-                    }
-                    else if(i == 1) {
-                        pieChartProject.setVisibility(View.GONE);
-                        linearLayoutUserRating.setVisibility(View.GONE);
-                        barChartProject.setVisibility(View.VISIBLE);
-                        addDataBarChartProject(userId);
+                if (i == 0) {
+                    //mySpinner.getSelectedItem().toString().equals("Görev Durumu")
+                    barChartProject.setVisibility(View.GONE);
+                    linearLayoutUserRating.setVisibility(View.GONE);
+                    pieChartProject.setVisibility(View.VISIBLE);
+                    //addDataTask();
+                    new AsyncTaskState().execute();
+                } else if (i == 1) {
+                    pieChartProject.setVisibility(View.GONE);
+                    linearLayoutUserRating.setVisibility(View.GONE);
+                    barChartProject.setVisibility(View.VISIBLE);
+                    addDataBarChartProject(userId);
+                } else if (i == 2) {
+                    barChartProject.setVisibility(View.GONE);
+                    pieChartProject.setVisibility(View.GONE);
+                    linearLayoutUserRating.setVisibility(View.VISIBLE);
 
-                    }
-                    else if(i==2){
-                        barChartProject.setVisibility(View.GONE);
-                        pieChartProject.setVisibility(View.GONE);
-                        linearLayoutUserRating.setVisibility(View.VISIBLE);
-
-                        getDataTaskAnalysis(userId);
-                        // kod kısmını eklicezzadadad
-                    }
-
+                    getDataTaskAnalysis(userId);
+                    // kod kısmını eklicezzadadad
                 }
+            }
 
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
-                }
-            });
-
+            }
+        });
 
         averageUserTaskRating = view.findViewById(R.id.averageUserTaskRating);
 
-        textViewFive = view.findViewById(R.id.textViewFive); textViewFour = view.findViewById(R.id.textViewFour); textViewThree = view.findViewById(R.id.textViewThree);
-        textViewTwo = view.findViewById(R.id.textViewTwo); textViewOne = view.findViewById(R.id.textViewOne);
+        textViewFive = view.findViewById(R.id.textViewFive);
+        textViewFour = view.findViewById(R.id.textViewFour);
+        textViewThree = view.findViewById(R.id.textViewThree);
+        textViewTwo = view.findViewById(R.id.textViewTwo);
+        textViewOne = view.findViewById(R.id.textViewOne);
 
         textViewAverage = view.findViewById(R.id.textViewAverage);
 
-        textProgressBarFiveStars = view.findViewById(R.id.textProgressBarFiveStars); textProgressBarFourStars = view.findViewById(R.id.textProgressBarFourStars);
-        textProgressBarThreeStars = view.findViewById(R.id.textProgressBarThreeStars); textProgressBarTwoStars = view.findViewById(R.id.textProgressBarTwoStars);
+        textProgressBarFiveStars = view.findViewById(R.id.textProgressBarFiveStars);
+        textProgressBarFourStars = view.findViewById(R.id.textProgressBarFourStars);
+        textProgressBarThreeStars = view.findViewById(R.id.textProgressBarThreeStars);
+        textProgressBarTwoStars = view.findViewById(R.id.textProgressBarTwoStars);
         textProgressBarOneStars = view.findViewById(R.id.textProgressBarOneStars);
 
-      //      relativeLayoutGraphs = view.findViewById(R.id.relativeLayoutGraphs);
-       // pieChartProject = new PieChart(getActivity());
-           // relativeLayoutGraphs.addView(pieChart);
-       //     relativeLayoutGraphs.setBackgroundColor(Color.LTGRAY);
+        //      relativeLayoutGraphs = view.findViewById(R.id.relativeLayoutGraphs);
+        // pieChartProject = new PieChart(getActivity());
+        // relativeLayoutGraphs.addView(pieChart);
+        //     relativeLayoutGraphs.setBackgroundColor(Color.LTGRAY);
 
         pieChartProject.setUsePercentValues(true);
         pieChartProject.setDrawHoleEnabled(true);
         pieChartProject.getDescription().setEnabled(false);
 
-        pieChartProject.setExtraOffsets(5,10,5,5);
+        pieChartProject.setExtraOffsets(5, 10, 5, 5);
         pieChartProject.setDragDecelerationFrictionCoef(0.95f);
-     //   pieChartProject.setHoleColor(Color.WHITE);
+        //   pieChartProject.setHoleColor(Color.WHITE);
 
-       // pieChartProject.setHoleRadius(7);
+        // pieChartProject.setHoleRadius(7);
         pieChartProject.setTransparentCircleRadius(61f);
-       // pieChartProject.setRotationAngle(0);
+        // pieChartProject.setRotationAngle(0);
         pieChartProject.setRotationEnabled(false);
 
         Description description = new Description();
@@ -172,31 +181,29 @@ public class GraphFragment extends Fragment {
         pieChartProject.setDescription(description);
         pieChartProject.animateY(1000, Easing.EasingOption.EaseInCubic);
         pieChartProject.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-                @Override
-                public void onValueSelected(Entry e, Highlight h) {
-                    if(e==null)
-                        return;
-                   // Toast.makeText(getActivity(), xData[e.getX()], Toast.LENGTH_SHORT).show();
-                }
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+                if (e == null)
+                    return;
+                // Toast.makeText(getActivity(), xData[e.getX()], Toast.LENGTH_SHORT).show();
+            }
 
-                @Override
-                public void onNothingSelected() {
+            @Override
+            public void onNothingSelected() {
 
-                }
-            });
+            }
+        });
 
-        addDataTask();
-           // addData();
-
-
+       // addDataTask();
+        // addData();
 
         barChartProject.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
-                if(e==null)
+                if (e == null)
                     return;
                 //String a =
-                Toast.makeText(getActivity(), managerProjectDays.get((int)e.getX()).getProjectName()+"--"+managerProjectDays.get((int)e.getX()).getProjectDaysCount(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), managerProjectDays.get((int) e.getX()).getProjectName() + "--" + managerProjectDays.get((int) e.getX()).getProjectDaysCount(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -221,12 +228,11 @@ public class GraphFragment extends Fragment {
             public void onResponse(Call<List<UserAssignedTaskStatusModel>> call, Response<List<UserAssignedTaskStatusModel>> response) {
                 List<UserAssignedTaskStatusModel> taskStatu = response.body();
                 try {
-
                     ArrayList<PieEntry> yVal = new ArrayList<>();
-                    for(int i=0;i<taskStatu.size();i++)
-                        yVal.add(new PieEntry(taskStatu.get(i).getUserTaskStatusInPercent(),taskStatu.get(i).getUserTaskStatus()));
+                    for (int i = 0; i < Objects.requireNonNull(taskStatu).size(); i++)
+                        yVal.add(new PieEntry(taskStatu.get(i).getUserTaskStatusInPercent(), taskStatu.get(i).getUserTaskStatus()));
 
-                    PieDataSet dataSet = new PieDataSet(yVal,"Proje Durumu");
+                    PieDataSet dataSet = new PieDataSet(yVal, "Proje Durumu");
                     dataSet.setSliceSpace(3f);
                     dataSet.setSelectionShift(5f);
 
@@ -235,15 +241,15 @@ public class GraphFragment extends Fragment {
                /*     for(int c: ColorTemplate.VORDIPLOM_COLORS)
                         colors.add(c);
 */
-                  //  for(int c: ColorTemplate.JOYFUL_COLORS)
-                   //     colors.add(c);
+                    //  for(int c: ColorTemplate.JOYFUL_COLORS)
+                    //     colors.add(c);
 
-                    for(int c: ColorTemplate.COLORFUL_COLORS)
+                    for (int c : ColorTemplate.COLORFUL_COLORS)
                         colors.add(c);
-                    for(int c: ColorTemplate.LIBERTY_COLORS)
+                    for (int c : ColorTemplate.LIBERTY_COLORS)
                         colors.add(c);
-                  //  for(int c: ColorTemplate.PASTEL_COLORS)
-                //        colors.add(c);
+                    //  for(int c: ColorTemplate.PASTEL_COLORS)
+                    //        colors.add(c);
 
                     colors.add(ColorTemplate.getHoloBlue());
                     dataSet.setColors(colors);
@@ -254,57 +260,51 @@ public class GraphFragment extends Fragment {
                     data.setValueTextColor(Color.GRAY);
                     pieChartProject.setData(data);
 
-                }catch (Exception e){
+                } catch (Exception e) {
                     Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-
-
             }
 
             @Override
             public void onFailure(Call<List<UserAssignedTaskStatusModel>> call, Throwable t) {
                 try {
                     Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                }catch (Exception e){
+                } catch (Exception e) {
                     Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
-
     }
 
     private void addData() {
-
-
         //region Description
         // endregion
         ArrayList<PieEntry> yVal = new ArrayList<>();
-        for(int i=0;i<yData.length;i++)
-            yVal.add(new PieEntry(yData[i],xData[i]));
+        for (int i = 0; i < yData.length; i++)
+            yVal.add(new PieEntry(yData[i], xData[i]));
 
-      //  ArrayList<String> xVal = new ArrayList<>();
+        //  ArrayList<String> xVal = new ArrayList<>();
 
       /*  for(int i=0;i<xData.length;i++)
             xVal.add(xData[i]);
 */
-        PieDataSet dataSet = new PieDataSet(yVal,"Proje Durumu");
+        PieDataSet dataSet = new PieDataSet(yVal, "Proje Durumu");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
 
         ArrayList<Integer> colors = new ArrayList<>();
 
-        for(int c: ColorTemplate.VORDIPLOM_COLORS)
+        for (int c : ColorTemplate.VORDIPLOM_COLORS)
             colors.add(c);
 
-        for(int c: ColorTemplate.JOYFUL_COLORS)
+        for (int c : ColorTemplate.JOYFUL_COLORS)
             colors.add(c);
 
-        for(int c: ColorTemplate.COLORFUL_COLORS)
+        for (int c : ColorTemplate.COLORFUL_COLORS)
             colors.add(c);
-        for(int c: ColorTemplate.LIBERTY_COLORS)
+        for (int c : ColorTemplate.LIBERTY_COLORS)
             colors.add(c);
-        for(int c: ColorTemplate.PASTEL_COLORS)
+        for (int c : ColorTemplate.PASTEL_COLORS)
             colors.add(c);
 
         colors.add(ColorTemplate.getHoloBlue());
@@ -315,17 +315,14 @@ public class GraphFragment extends Fragment {
         pieChartProject.setData(data);
     }
 
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         myAdepter = new ArrayAdapter<>(context,
-                android.R.layout.simple_list_item_1,iller);
+                android.R.layout.simple_list_item_1, analizler);
 
         myAdepter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
     }
-
 
     private void addDataBarChartProject(String userId) {
 
@@ -340,13 +337,13 @@ public class GraphFragment extends Fragment {
                     ArrayList<String> projectNameList = new ArrayList<>();
 
                     for (int i = 0; i < managerProjectDays.size(); i++) {
-                        entries.add(new BarEntry( i,managerProjectDays.get(i).getProjectDaysCount()));
+                        entries.add(new BarEntry(i, managerProjectDays.get(i).getProjectDaysCount()));
 
                         projectNameList.add(managerProjectDays.get(i).getProjectName());
 
                     }
                     BarDataSet set = new BarDataSet(entries, "Proje Günler");
-                  //  barChartProject.animateY(1000, Easing.EasingOption.EaseInElastic);
+                    //  barChartProject.animateY(1000, Easing.EasingOption.EaseInElastic);
 
                     barChartProject.animateY(1000);
                     set.setColors(ColorTemplate.MATERIAL_COLORS);
@@ -384,80 +381,106 @@ public class GraphFragment extends Fragment {
         barChartProject.setData(data);
         barChartProject.setFitBars(true); // make the x-axis fit exactly all bars
         barChartProject.invalidate(); // refresh*/
-
     }
 
-    private void getDataTaskAnalysis(String userId){
+    private void getDataTaskAnalysis(String userId) {
 
         Call<String> call = userService.GetTaskPointAnalize(userId);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
+                progressDialog = new ProgressDialog(getActivity());
+                progressDialog.setMessage("Veriler Listeleniyor. Bekleyin...");
+                progressDialog.show();
                 try {
                     String result = response.body();
-                    String arrayResult[] = result.split(",");
-                    if(arrayResult.length <= 1){
+                    assert result != null;
+                    String[] arrayResult = result.split(",");
+                    if (arrayResult.length <= 1) {
                         Toast.makeText(getActivity(), "Değerlendirme Bulunamadı!", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        textViewAverage.setText("Ortalama Puan("+arrayResult[5]+" / "+arrayResult[6]+" = "+arrayResult[7]+")");
-                        averageUserTaskRating.setRating(Float.valueOf(arrayResult[7]));
+                    } else {
+                        textViewAverage.setText(String.format("Ortalama Puan(%s / %s = %s)", arrayResult[5], arrayResult[6], arrayResult[7]));
+                        averageUserTaskRating.setRating(Float.parseFloat(arrayResult[7]));
 
-                        textViewFive.setText(arrayResult[0]+" Tane");
+                        textViewFive.setText(String.format("%s Tane", arrayResult[0]));
 
-                        float five = Float.valueOf(arrayResult[0]);
-                        float total = Float.valueOf(arrayResult[6]);
-                        float fivePer = Float.valueOf((five/total)*100);
+                        float five = Float.parseFloat(arrayResult[0]);
+                        float total = Float.parseFloat(arrayResult[6]);
+                        float fivePer = (five / total) * 100;
                         textProgressBarFiveStars.setMax(100);
                         textProgressBarFiveStars.setProgress(fivePer);
-                        textProgressBarFiveStars.setSecondaryProgress(fivePer+5);
-                        textProgressBarFiveStars.setProgressText("5 Yıldız"+'('+fivePer+"%)");
+                        textProgressBarFiveStars.setSecondaryProgress(fivePer + 5);
+                        textProgressBarFiveStars.setProgressText("5 Yıldız" + '(' + fivePer + "%)");
 
-                        textViewFour.setText(arrayResult[1]+" Tane");
+                        textViewFour.setText(String.format("%s Tane", arrayResult[1]));
 
-                        float four = Float.valueOf(arrayResult[1]);
-                        float fourPer = Float.valueOf((four/total)*100);
+                        float four = Float.parseFloat(arrayResult[1]);
+                        float fourPer = (four / total) * 100;
                         textProgressBarFourStars.setProgress(fourPer);
-                        textProgressBarFourStars.setSecondaryProgress(fourPer+5);
-                        textProgressBarFourStars.setProgressText("4 Yıldız"+'('+(int)fourPer+"%)");
+                        textProgressBarFourStars.setSecondaryProgress(fourPer + 5);
+                        textProgressBarFourStars.setProgressText("4 Yıldız" + '(' + (int) fourPer + "%)");
 
-                        textViewThree.setText(arrayResult[2]+" Tane");
+                        textViewThree.setText(String.format("%s Tane", arrayResult[2]));
 
-                        float three = Float.valueOf(arrayResult[2]);
-                        float threePer = Float.valueOf((three/total)*100);
+                        float three = Float.parseFloat(arrayResult[2]);
+                        float threePer = (three / total) * 100;
                         textProgressBarThreeStars.setProgress(threePer);
-                        textProgressBarThreeStars.setSecondaryProgress(threePer+5);
-                        textProgressBarThreeStars.setProgressText("3 Yıldız"+'('+(int)threePer+"%)");
+                        textProgressBarThreeStars.setSecondaryProgress(threePer + 5);
+                        textProgressBarThreeStars.setProgressText("3 Yıldız" + '(' + (int) threePer + "%)");
 
-                        textViewTwo.setText(arrayResult[3]+" Tane");
+                        textViewTwo.setText(String.format("%s Tane", arrayResult[3]));
 
-                        float two = Float.valueOf(arrayResult[3]);
-                        float twoPer = Float.valueOf((two/total)*100);
+                        float two = Float.parseFloat(arrayResult[3]);
+                        float twoPer = (two / total) * 100;
                         textProgressBarTwoStars.setProgress(twoPer);
-                        textProgressBarTwoStars.setSecondaryProgress(twoPer+5);
-                        textProgressBarTwoStars.setProgressText("2 Yıldız"+'('+(int)twoPer+"%)");
+                        textProgressBarTwoStars.setSecondaryProgress(twoPer + 5);
+                        textProgressBarTwoStars.setProgressText("2 Yıldız" + '(' + (int) twoPer + "%)");
 
-                        textViewOne.setText(arrayResult[4]+" Tane");
+                        textViewOne.setText(String.format("%s Tane", arrayResult[4]));
 
-                        float one = Float.valueOf(arrayResult[4]);
-                        float onePer = Float.valueOf((one/total)*100);
+                        float one = Float.parseFloat(arrayResult[4]);
+                        float onePer = (one / total) * 100;
                         textProgressBarOneStars.setProgress(onePer);
-                        textProgressBarOneStars.setSecondaryProgress(onePer+5);
-                        textProgressBarOneStars.setProgressText("1 Yıldız"+'('+(int)onePer+"%)");
+                        textProgressBarOneStars.setSecondaryProgress(onePer + 5);
+                        textProgressBarOneStars.setProgressText("1 Yıldız" + '(' + (int) onePer + "%)");
                     }
 
-                }
-                catch (Exception e){
+                } catch (Exception e) {
                     Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+                progressDialog.dismiss();
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-
+                Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
     }
+
+    class AsyncTaskState extends AsyncTask<Void, Void, Void>{
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setMessage("Veriler Listeleniyor. Bekleyin...");
+            progressDialog.show();
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            addDataTask();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void unused) {
+            progressDialog.dismiss();
+            super.onPostExecute(unused);
+        }
+    }
+
 }
 

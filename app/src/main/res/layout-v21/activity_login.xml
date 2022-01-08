@@ -12,10 +12,9 @@
         android:layout_height="120dp"
         android:layout_above="@+id/linearLayout"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="70dp"
         android:layout_marginTop="50dp"
+        android:layout_marginBottom="40dp"
         android:src="@drawable/team_work" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +34,7 @@
             android:layout_marginBottom="40dp"
             android:text="@string/proje_yonetimi"
             android:textAlignment="center"
-            android:textSize="36dp" />
+            android:textSize="36sp" />
 
         <EditText
             android:id="@+id/editTextEmail"
@@ -43,14 +42,17 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:hint="@string/mail_adresi_giriniz"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="15dp"
             android:hint="@string/sifre_giriniz"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:minHeight="48dp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -63,9 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFa043"
-
-
-                android:text="Giriş" />
+                android:text="@string/giris" />
         </androidx.cardview.widget.CardView>
 
 
@@ -73,14 +73,14 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="200dp"
+        android:id="@+id/kayitBtn"
+        android:layout_width="250dp"
         android:layout_height="50dp"
-        android:text="Kayit OL"
-        android:backgroundTint="#C3EEFF41"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
-        android:id="@+id/kayitBtn"/>
+        android:backgroundTint="#C3EEFF41"
+        android:text="@string/kayit_ol" />
 
    <!-- <Button
         android:id="@+id/buttonIpPop"

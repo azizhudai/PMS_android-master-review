@@ -118,4 +118,9 @@
     </string>
     <string name="title_activity_user_setting">UserSettingActivity</string>
     <string name="title_activity_user_appointed_task_list">Atanmış Olan Görevler</string>
+    <string name="proje_yonetimi">Proje Yönetimi</string>
+    <string name="mail_adresi_giriniz">Mail Adresi Giriniz</string>
+    <string name="sifre_giriniz">Şifre Giriniz</string>
+    <string name="giris">Giriş</string>
+    <string name="kayit_ol">Kayit OL</string>
 </resources>

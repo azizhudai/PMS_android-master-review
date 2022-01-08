@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+// Apply the Crashlytics Gradle plugin
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     configurations.all {
@@ -76,7 +78,7 @@ dependencies {
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
 
-    implementation 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
+     'org.apache.httpcomponents:httpclient-android:4.3.5.1'
 
     implementation('com.airbnb:deeplinkdispatch:5.2.0') {
         exclude group: 'com.google.code.findbugs'
@@ -84,6 +86,23 @@ dependencies {
     // compile 'us.raudi:pushraven:1.0.1'
 
     implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+
+    androidTestImplementation "androidx.test:runner:1.4.0"
+    androidTestImplementation "androidx.test:rules:1.4.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:3.4.0"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.4.0"
+
+    implementation 'com.github.Yalantis:SearchFilter:v1.0.4'
+
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+
+    // Declare the dependencies for the Crashlytics and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
 }
 
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-android'
