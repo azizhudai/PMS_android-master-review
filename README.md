@@ -20,9 +20,16 @@ Proje yönetimi kullanıcıların projelerini ekleyerek görevlerinin takibini y
 - Atanmış görevlerini tamamlanmış durumuna çekebilmektedir.
 - Atayan kişi atanan kişiye görev durumu için puan verebilmektedir.
 
+
+
 # Ekran Görüntüleri
 <div align="center">
-  
+
+ Firebase Test Lab - Iu Test
+<br>
+<br>
+![screencapture-console-firebase-google-u-1-project-deneme2-a92ef-testlab-histories-bh-cdc8c062942225a5-matrices-4806656160980596631-executions-bs-3b1d4685a7475510-performance-2022-01-10-01_06_17](https://user-images.githubusercontent.com/24457063/148703119-1ceb4681-03c6-4dee-8f54-a242d8998073.jpg)
+---------------------------------------------	
 <img  align="center" src="https://user-images.githubusercontent.com/24457063/148695716-857c1fed-f06b-4d02-be9b-358fb04d0b54.jpg" width="400" height="800">[Splash Screen Sayfası](https://user-images.githubusercontent.com/24457063/148695716-857c1fed-f06b-4d02-be9b-358fb04d0b54.jpg)
 ----------------------------------------------
 <img align="center" src="https://user-images.githubusercontent.com/24457063/148695719-94f98393-177d-4445-833f-4f20c4941a3c.jpg" width="400" height="800">[Kullanıcı Kayıt Sayfası](https://user-images.githubusercontent.com/24457063/148695719-94f98393-177d-4445-833f-4f20c4941a3c.jpg)
