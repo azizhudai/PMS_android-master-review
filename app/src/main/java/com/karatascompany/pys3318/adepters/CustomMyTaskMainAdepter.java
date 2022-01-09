@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.karatascompany.pys3318.R;
+import com.karatascompany.pys3318.helper.StringFormatterUpper;
 import com.karatascompany.pys3318.models.TaskModel;
 
 import java.util.ArrayList;
@@ -49,8 +50,8 @@ public class CustomMyTaskMainAdepter extends RecyclerView.Adapter<CustomMyTaskMa
     public void onBindViewHolder(ViewHolderMyTask holder, int position) {
 
         TaskModel currentTaskModel = listMyTaskModels.get(position);
-        holder.textViewTaskProjectName.setText(currentTaskModel.getProjectName());
-        holder.textViewMyTaskName.setText(currentTaskModel.getTaskName());
+        holder.textViewTaskProjectName.setText(StringFormatterUpper.capitalizeWord(currentTaskModel.getProjectName()));
+        holder.textViewMyTaskName.setText(StringFormatterUpper.capitalizeWord(currentTaskModel.getTaskName()));
         holder.textViewMyTaskDate.setText((currentTaskModel.getStartDateStr()+"/" + currentTaskModel.getEndDateStr()));
         if(currentTaskModel.getNow() == null)
             holder.textViewMyTaskDate.setTextColor(Color.RED);

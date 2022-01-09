@@ -115,13 +115,7 @@ public class MyTaskFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
             @Override
             public void onFailure(Call<List<TaskModel>> call, Throwable t) {
-                try {
-                    Toast.makeText(getActivity(),"Hatalı",Toast.LENGTH_SHORT).show();
-                }
-                catch (Exception e){
-                    Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-
+                    Toast.makeText(getActivity(),t.getLocalizedMessage(),Toast.LENGTH_SHORT).show();
             }
         });
     }

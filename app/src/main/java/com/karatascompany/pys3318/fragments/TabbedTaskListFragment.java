@@ -2,15 +2,18 @@ package com.karatascompany.pys3318.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +23,8 @@ import com.karatascompany.pys3318.InsertTaskActivity;
 import com.karatascompany.pys3318.ProjectTaskDetailActivity;
 import com.karatascompany.pys3318.R;
 import com.karatascompany.pys3318.session.Session;
+
+import java.util.Objects;
 
 public class TabbedTaskListFragment extends AppCompatActivity {
 
@@ -37,7 +42,7 @@ public class TabbedTaskListFragment extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -55,27 +60,22 @@ public class TabbedTaskListFragment extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
 
                 Bundle extras = getIntent().getExtras();
 
+                assert extras != null;
                 int projectId = extras.getInt("projectId");
 
-                if (extras != null) {
+                if (projectId != 0) {
                     Intent intent = new Intent(TabbedTaskListFragment.this, InsertTaskActivity.class);
-                    intent.putExtra("projectId",projectId);
+                    intent.putExtra("projectId", projectId);
                     startActivity(intent);
-                    //startActivity(new Intent(TabbedTaskListFragment.this, InsertTaskActivity.class));
-
-                }else{
+                } else {
                     Toast.makeText(TabbedTaskListFragment.this, "Proje Bulunamadı!", Toast.LENGTH_SHORT).show();
                 }
-               }
+            }
         });
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -99,9 +99,11 @@ public class TabbedTaskListFragment extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
 
-
-
+        super.onBackPressed();
+    }
 
     public static class SectionsPagerAdapter extends FragmentPagerAdapter {
 

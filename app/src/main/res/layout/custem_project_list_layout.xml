@@ -26,18 +26,21 @@
             android:src="@drawable/i_new_job_48"/>
 
         <TextView
+            android:id="@+id/textViewProjectName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textViewProjectName"
-            android:textSize="20dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_margin="10dp"
-            android:text="adii "
             android:layout_alignTop="@+id/imageViewProject"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@+id/imageViewProject"/>
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/imageViewProject"
+            android:text="adii "
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/textViewProjectId"

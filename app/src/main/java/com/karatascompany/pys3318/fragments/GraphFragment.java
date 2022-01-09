@@ -232,7 +232,7 @@ public class GraphFragment extends Fragment {
                     for (int i = 0; i < Objects.requireNonNull(taskStatu).size(); i++)
                         yVal.add(new PieEntry(taskStatu.get(i).getUserTaskStatusInPercent(), taskStatu.get(i).getUserTaskStatus()));
 
-                    PieDataSet dataSet = new PieDataSet(yVal, "Proje Durumu");
+                    PieDataSet dataSet = new PieDataSet(yVal, "");
                     dataSet.setSliceSpace(3f);
                     dataSet.setSelectionShift(5f);
 

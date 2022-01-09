@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.karatascompany.pys3318.R;
+import com.karatascompany.pys3318.helper.StringFormatterUpper;
 import com.karatascompany.pys3318.models.TaskModel;
 
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class CustomTaskAdapter extends RecyclerView.Adapter<CustomTaskAdapter.Vi
     public void onBindViewHolder(ViewHolderTask holder, int position) {
 
         TaskModel currentTaskModel = listTaskModels.get(position);
-        holder.textViewTaskName.setText(currentTaskModel.getTaskName());
+        holder.textViewTaskName.setText(StringFormatterUpper.capitalizeWord(currentTaskModel.getTaskName()));
         holder.textViewTaskDate.setText((currentTaskModel.getStartDateStr()+"/" + currentTaskModel.getEndDateStr()));
         if(currentTaskModel.getNow() == null)
         holder.textViewTaskDate.setTextColor(Color.RED);

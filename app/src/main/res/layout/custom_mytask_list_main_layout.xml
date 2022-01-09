@@ -10,7 +10,7 @@
     app:contentPadding="4dp"
     android:foreground="?selectableItemBackground"
     android:clickable="true"
-    >
+    android:focusable="true">
 
     <RelativeLayout
         android:layout_width="match_parent"

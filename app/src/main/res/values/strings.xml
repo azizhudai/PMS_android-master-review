@@ -109,9 +109,9 @@
     <string name="default_notification_channel_id">görev atama ch1</string>
 
     <string-array name="names">
-        <item name="Çubuk"></item>
-        <item name="daire"></item>
-        <item name="çizgi"></item>
+        <item name="Çubuk" />
+        <item name="daire" />
+        <item name="çizgi" />
     </string-array>
     <string name="title_activity_fragment_main_tabbed_my_graphs">
         FragmentMainTabbedMyGraphsActivity
@@ -121,6 +121,6 @@
     <string name="proje_yonetimi">Proje Yönetimi</string>
     <string name="mail_adresi_giriniz">Mail Adresi Giriniz</string>
     <string name="sifre_giriniz">Şifre Giriniz</string>
-    <string name="giris">Giriş</string>
     <string name="kayit_ol">Kayit OL</string>
+    <string name="giris">Giriş</string>
 </resources>

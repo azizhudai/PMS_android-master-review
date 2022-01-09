@@ -34,6 +34,8 @@ public class UserSignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_sign_up);
 
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextUserName = findViewById(R.id.editTextUserName);
         editTextUserSurname = findViewById(R.id.editTextUserSurname);

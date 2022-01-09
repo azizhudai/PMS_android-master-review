@@ -1,5 +1,6 @@
 package com.karatascompany.pys3318;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -99,6 +100,7 @@ public class InsertTaskActivity extends AppCompatActivity {
         session = new Session(this);
         userId = session.getUserId();
         Bundle extras = getIntent().getExtras();
+        assert extras != null;
         projectId = extras.getInt("projectId");
         //Toast.makeText(this, "Proje id: " + projectId, Toast.LENGTH_SHORT).show();
         LoadRecylerViewData(userId);
@@ -300,15 +302,15 @@ public class InsertTaskActivity extends AppCompatActivity {
 
             String[] valueStartDate = textViewTaskStartDate.getText().toString().split("\\.");
             String[] valueEndDate = textViewTaskEndDate.getText().toString().split("\\.");
-            year_start = Integer.valueOf(valueStartDate[2]);
-            publicStartDate = Integer.valueOf(valueStartDate[1]); // 1 ise 1dir...
-            month_start = Integer.valueOf(valueStartDate[1]) - 1;
-            day_start = Integer.valueOf(valueStartDate[0]);
+            year_start = Integer.parseInt(valueStartDate[2]);
+            publicStartDate = Integer.parseInt(valueStartDate[1]); // 1 ise 1dir...
+            month_start = Integer.parseInt(valueStartDate[1]) - 1;
+            day_start = Integer.parseInt(valueStartDate[0]);
 
-            year_end = Integer.valueOf(valueEndDate[2]); //cal.get(Integer.valueOf(valueEndDate[2]));
-            month_end = Integer.valueOf(valueEndDate[1]) - 1;//cal.get(Integer.valueOf(valueEndDate[0]));
-            publicEndDate = Integer.valueOf(valueEndDate[1]);
-            day_end = Integer.valueOf(valueEndDate[0]);//cal.get(Integer.valueOf(valueEndDate[1]));
+            year_end = Integer.parseInt(valueEndDate[2]); //cal.get(Integer.valueOf(valueEndDate[2]));
+            month_end = Integer.parseInt(valueEndDate[1]) - 1;//cal.get(Integer.valueOf(valueEndDate[0]));
+            publicEndDate = Integer.parseInt(valueEndDate[1]);
+            day_end = Integer.parseInt(valueEndDate[0]);//cal.get(Integer.valueOf(valueEndDate[1]));
 
         } catch (Exception e) {
             Toast.makeText(InsertTaskActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -344,6 +346,7 @@ public class InsertTaskActivity extends AppCompatActivity {
     }
 
     private DatePickerDialog.OnDateSetListener dpickerListener = new DatePickerDialog.OnDateSetListener() {
+        @SuppressLint("DefaultLocale")
         @Override
         public void onDateSet(DatePicker datePicker, int year, int month, int day) {
 
@@ -368,13 +371,13 @@ public class InsertTaskActivity extends AppCompatActivity {
                 }
             }
 
-            if (statu == false) {
+            if (!statu) {
                 //   Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 //         .setAction("Action", null).show();
                 Toast.makeText(InsertTaskActivity.this, "Son tarihten büyük olamaz!", Toast.LENGTH_SHORT).show();
 
             }
-            if (isSaveStartDate == true) {
+            if (isSaveStartDate) {
                 year_start = year;
                 month_start = month + 1;
                 day_start = day;
@@ -382,9 +385,8 @@ public class InsertTaskActivity extends AppCompatActivity {
                 String month_startStr = String.valueOf(month_start), day_startStr = String.valueOf(day_start);
                 if (month_start < 10) month_startStr = "0" + String.valueOf(month_start);
                 if (day_start < 10) day_startStr = "0" + String.valueOf(day_start);
-
-                textViewTaskStartDate.setText(day_startStr + "." + month_startStr + "." + year_start);// "yyyy-MM-dd"
-
+                textViewTaskStartDate.setText(day_startStr+'.'+month_startStr+'.'+year_start);//(String.format("%s.%s.%d", day_startStr, month_startStr, year_start));// "yyyy-MM-dd"
+                //day_endStr + "." + month_endStr + "." + year_end
                 // String newStartDate = String.valueOf(year_start + "." + month_startStr + "." + day_startStr);
                 //Call<String> call = userService.EditProjectTaskStartDate(userId, taskIdStr, newStartDate);
                 /*call.enqueue(new Callback<String>() {
@@ -437,13 +439,13 @@ public class InsertTaskActivity extends AppCompatActivity {
                 }
             }
 
-            if (statuEnd == false) {
+            if (!statuEnd) {
                 //   Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 //         .setAction("Action", null).show();
                 Toast.makeText(InsertTaskActivity.this, "ilk tarihten küçük olamaz!", Toast.LENGTH_SHORT).show();
 
             }
-            if (isSaveEndDate == true) {
+            if (isSaveEndDate) {
                 year_end = year;
                 month_end = month + 1;
                 publicEndDate = month_end;

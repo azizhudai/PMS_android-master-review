@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/cardViewUserAppointedTask"
-    android:layout_margin="5dp"
+    android:layout_margin="15dp"
     app:cardCornerRadius="8dp"
 
     app:cardElevation="4dp"
@@ -28,13 +28,10 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:progress="27"
-
-    android:paddingStart="10dp"
+            android:paddingStart="10dp"
             android:paddingEnd="10dp"
-
             android:progressTint="@color/colorRed"
             android:layout_alignParentTop="true"
-
             android:layout_alignStart="@+id/textViewTaskName"
             android:layout_marginStart="15dp" />
 
@@ -54,13 +51,12 @@
 
         <TextView
             android:id="@+id/textViewTaskName"
-            android:layout_width="3000dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewProjectName"
             android:layout_marginStart="4dp"
             android:layout_marginTop="7dp"
-
-            android:text="görev adını girdk"
+            android:text="görev adını gir"
             android:textSize="20dp" />
 
         <TextView
@@ -70,7 +66,7 @@
             android:layout_alignParentStart="true"
 
             android:layout_toLeftOf="@+id/textViewUserMail"
-            android:text="proje adı  "/>
+            android:text="proje adı  " />
 
         <TextView
             android:id="@+id/textViewUserMail"
@@ -81,32 +77,29 @@
             android:layout_marginEnd="12dp"
             android:paddingLeft="4dp"
             android:layout_marginStart="5dp"
-            android:text="kullanıcı maili"
+            android:text="kullanıcı mail"
             android:textSize="12dp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12dp"
-            android:paddingTop="10dp"
             android:id="@+id/textViewResidualTotalDays"
-            android:layout_below="@+id/textViewTaskName"/>
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTaskName"
+            android:paddingTop="10dp"
+            android:textSize="12dp" />
 
         <RatingBar
             android:id="@+id/ratingBarUserPoint"
+            style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="235dp"
             android:layout_below="@+id/textViewTaskName"
-            android:numStars="5"
-            android:stepSize="1"
-            android:paddingTop="10dp"
             android:layout_alignStart="@+id/textViewTaskName"
-            android:layout_marginEnd="10dp"
-            android:paddingLeft="4dp"
-            style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_alignParentEnd="true"
-            />
+            android:layout_marginStart="255dp"
+            android:numStars="5"
+            android:paddingTop="10dp"
+            android:stepSize="1" />
         <!--
                 <TextView
                     android:id="@+id/textViewUserName"

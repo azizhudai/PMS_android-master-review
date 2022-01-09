@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.karatascompany.pys3318.R;
+import com.karatascompany.pys3318.helper.StringFormatterUpper;
 import com.karatascompany.pys3318.models.ProjectModel;
 
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class CustomProjectListViewAdepter extends RecyclerView.Adapter<CustomPro
 
         ProjectModel currentProjectModel = projectListFiltered.get(position);
        // for(int i=0; i<listProjectModels.size();i++){
-            holder.textViewProjectName.setText(currentProjectModel.getProjectName());
+            holder.textViewProjectName.setText(StringFormatterUpper.capitalizeWord(currentProjectModel.getProjectName()));
       //      holder.textViewProjectId.setText(String.valueOf(currentProjectModel.getProjectId()));
      //   }
        // holder.textViewProjectName.setText(currentProjectModel.getProjectName());

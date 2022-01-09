@@ -103,7 +103,6 @@ public class MyProjectFragment extends Fragment implements SwipeRefreshLayout.On
             public void onResponse(Call<List<ProjectModel>> call, Response<List<ProjectModel>> response) {
                 try {
                     projectModels = (ArrayList<ProjectModel>) response.body();
-                    Toast.makeText(getContext(),String.valueOf(projectModels.size()), Toast.LENGTH_SHORT).show();
                     customProjectAdepter.setProjectList(projectModels);
                     recyclerViewListProjectHits.setAdapter(customProjectAdepter);
                     customProjectAdepter.setOnItemClickListener(MyProjectFragment.this);
@@ -187,13 +186,11 @@ public class MyProjectFragment extends Fragment implements SwipeRefreshLayout.On
 
     @Override
     public void onItemClick(ProjectModel projectModel,int position) {
-
-       ProjectModel clickedItem = projectModel;
-               //projectModels.get(position);
-       Toast.makeText(getActivity(),String.valueOf(clickedItem.getProjectId())+" "+ clickedItem.getProjectName(),Toast.LENGTH_SHORT).show();
+       String projectName = projectModel.getProjectName();
         Intent intent = new Intent(getActivity(), TabbedTaskListFragment.class);//TabbedTaskActivity
+        intent.putExtra("userIdint",projectName);
         intent.putExtra("userIdint",uid);
-        intent.putExtra("projectId",clickedItem.getProjectId());
+        intent.putExtra("projectId", projectModel.getProjectId());
        startActivity(intent);
     }
 

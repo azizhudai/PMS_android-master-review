@@ -4,7 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF59D"
     tools:context=".UserSignUpActivity">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/team_work" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,14 +24,14 @@
         android:orientation="vertical"
         android:id="@+id/linearLayout">
 
-
         <TextView
             android:layout_width="match_parent"
             android:textAlignment="center"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:gravity="center_horizontal"
             android:layout_height="wrap_content"
-            android:text="Proje Yönetimi"
+            android:text="@string/proje_yonetimi"
+            android:fontFamily="@font/titan_one"
             />
 
         <EditText
@@ -31,17 +41,18 @@
             android:layout_margin="15dp"
             android:hint="Mail Adresi"
             android:inputType="textEmailAddress" />
-
         <EditText
             android:id="@+id/editTextUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="15dp"
             android:hint="Kullanıcı Adı"
              />
         <EditText
             android:id="@+id/editTextUserSurname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="15dp"
             android:hint="Kullanıcı Soyadı"
             />
 
@@ -50,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Şifre"
+            android:layout_margin="15dp"
             android:inputType="textPassword" />
 
         <EditText
@@ -57,12 +69,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Şifre Tekrar"
+            android:layout_margin="15dp"
             android:inputType="textPassword" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             app:cardCornerRadius="20dp"
-
             android:layout_margin="15dp"
             android:backgroundTint="@color/colorPrimary"
             android:layout_height="wrap_content">
@@ -71,9 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/colorPrimary"
-
-
-                android:text="Kayıt Ol" />
+                android:text="@string/kayit_ol" />
         </androidx.cardview.widget.CardView>
 
         <ProgressBar
@@ -82,9 +92,7 @@
             android:paddingTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/archivo_black"
             android:layout_gravity="center"/>
-
     </LinearLayout>
-
-
 </RelativeLayout>

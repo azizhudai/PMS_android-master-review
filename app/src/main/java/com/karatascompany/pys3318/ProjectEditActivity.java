@@ -21,6 +21,7 @@ import com.karatascompany.pys3318.remote.UserService;
 import com.karatascompany.pys3318.session.Session;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -105,7 +106,7 @@ public class ProjectEditActivity extends AppCompatActivity {
 
             }
         });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         final Calendar cal = Calendar.getInstance();
         year_start= year_end = cal.get(Calendar.YEAR);

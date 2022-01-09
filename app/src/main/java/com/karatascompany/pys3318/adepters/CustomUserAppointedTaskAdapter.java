@@ -1,5 +1,6 @@
 package com.karatascompany.pys3318.adepters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -16,6 +17,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.karatascompany.pys3318.R;
+import com.karatascompany.pys3318.helper.StringFormatterUpper;
 import com.karatascompany.pys3318.models.UserAppointedTaskModel;
 
 import java.util.ArrayList;
@@ -98,8 +100,8 @@ public class CustomUserAppointedTaskAdapter extends RecyclerView.Adapter<CustomU
     @Override
     public void onBindViewHolder(ViewHolderAppointedTask holder, int position) {
         UserAppointedTaskModel userAppointedTask = filterListAppointedModels.get(position);
-        holder.textViewProjectName.setText(userAppointedTask.getProjectName());
-        holder.textViewTaskName.setText(userAppointedTask.getTaskName());
+        holder.textViewProjectName.setText(StringFormatterUpper.capitalizeWord(userAppointedTask.getProjectName()));
+        holder.textViewTaskName.setText(StringFormatterUpper.capitalizeWord(userAppointedTask.getTaskName()));
         holder.textViewUserMail.setText(userAppointedTask.getUserMail());
         holder.ratingBarUserPoint.setNumStars(5);
         holder.ratingBarUserPoint.setStepSize(1);
@@ -107,11 +109,13 @@ public class CustomUserAppointedTaskAdapter extends RecyclerView.Adapter<CustomU
         LayerDrawable stars = (LayerDrawable) holder.ratingBarUserPoint.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(Color.parseColor("#FFC300"), PorterDuff.Mode.SRC_ATOP);
 
-        if(filterListAppointedModels.get(position).getScore() != null)
-        holder.ratingBarUserPoint
-                .setRating(filterListAppointedModels.get(position).getScore().intValue());
+        if(filterListAppointedModels.get(position).getScore() != null) {
+            assert filterListAppointedModels.get(position).getScore() != null;
+            holder.ratingBarUserPoint
+                    .setRating(filterListAppointedModels.get(position).getScore().intValue());
+        }
 
-        if(filterListAppointedModels.get(position).getResidulaPercentageValue() > 0 && filterListAppointedModels.get(position).getDone() == false){
+        if(filterListAppointedModels.get(position).getResidulaPercentageValue() > 0 && !filterListAppointedModels.get(position).getDone()){
             holder.progressBarResudualDays.setProgress(filterListAppointedModels.get(position).getResidulaPercentageValue().intValue());
             holder.textViewResidualTotalDays.setText("Kalan Gün / Toplam Gün: "+filterListAppointedModels.get(position).getResidualTotalDays());
             holder.textViewProgressValue.setText(" % "+filterListAppointedModels.get(position).getResidulaPercentageValue().intValue());
@@ -122,7 +126,7 @@ public class CustomUserAppointedTaskAdapter extends RecyclerView.Adapter<CustomU
             holder.textViewResidualTotalDays.setText("");
         }
 
-        if(userAppointedTask.getDone() == true)
+        if(userAppointedTask.getDone())
         holder.cardViewUserAppointedTask.setCardBackgroundColor(Color.parseColor("#CCFFA3"));
         else  holder.cardViewUserAppointedTask.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
 
@@ -164,6 +168,7 @@ public class CustomUserAppointedTaskAdapter extends RecyclerView.Adapter<CustomU
                 return  filterResults;
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
 
