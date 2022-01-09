@@ -1,4 +1,30 @@
-# PMS_android-master-review
+# Proje Yönetim Sistemi - Tanıtım
+Proje yönetimi kullanıcıların projelerini ekleyerek görevlerinin takibini yaptığı uygulamadır.
+- Kullanıcı kaydı gerçekleştirilir.
+- Kullanıcı giriş yaparak sisteme dahil olur.
+- 3 . sekmeden proje oluturabilmektedir.
+- İlgili projeye tıklayarak görev listesi görüntülenmektedir.
+- Görev ekleme işlemi gerçekleştirilebilir.
+- Göreve kullanıcı atama işlemi yapılabilir.
+- Projeye ait tamamlanmış/tamamlanmamış istatistik durumunu görüntüleyebilir.
+- Kendisine atanan görevlerin durumunu listeyebilmektedir.
+- Atanmış görevlerini tamamlanmış durumuna çekebilmektedir.
+- Atayan kişi atanan kişiye görev durumu için puan verebilmektedir.
 
-Firebase Ui test Result
-https://00f74ba44b6c528285ca3e0ae8ff2f89074d45eb6c-apidata.googleusercontent.com/download/storage/v1/b/test-lab-ahvm1wvprp6b6-ymmcczhs1bmiu/o/web-build_2022-01-09T10:34:18.448Z_pxhz%2FH8216-28-en_US-portrait%2Fartifacts%2Foutput%2Fsitemap.png?jk=AFshE3XXdUYWFB5qCvcIh_KdVzpzgIF8GbNPch_H3ZU4WqTMqYtiJrzJCYsZul7UKBEfLfSh5I0vJjLowDb4j2PIL0tTty3OIuAoyyFVv67OJRgzpbTin4c7zWPdnDQofLpuxPueQISDruQVz_SnlYs3DtJYPNeUPkTlxChTEDTELMkbREazo6n3DQFzL-6LOW8O8ecqVi-9ZGRhBJzqh7RU7d5mba69PLK5bNOBzyBJk3p37sDCzDEBWEj7Gxw4oZrJxU7Uzv9n682DWWE8jTpIbOF-5hVV0bnzJN-vMRmoobdTq0E67NkyQAS0S2yTbAMsB7WDzjR5xX9IUdrhat1PdmSAq41rAN4ubLATAJ3VUvPrDilHiV8cdjAmuo0D3zGxR1xarAvchw5xRljRAmpIv4zczdIz8c5Cuo7xi_-O6WR_OW5VmU-e5TI1Z_D3k6UcUzvgfhGJGXpbwUSBBKubJwQTZFOPx7OoaKtVI0n_tkj3dODWLPz9Kqe4RUZuo13udRL78tta-lati5kb1rJ8otA9mKr-AnuqlljncakWUJovIxfVr5kEz0ht3dFqEqommkvvus_hY9RfN6KfYISLPO4lvZd_2wMHpI-qK4unm0M50ifIhk78hVo47m3Gv8-B8sB789k_8pyg9z8RFEpkOkVbmCnT29ktljocpRuMj1WzYYWzzUW2o7Te7b2msfgzqP5_AI21IARGXRNJfuYAGEx203JxTYPj-tHU_QMjPskue76g7vVYI8LiHXttKQTod0zEenjuyP7nLB1_QWCLDsx-CwdsInfC7lc_pnEKxs_k7DbmWVebXGNVzLrFnaxgZBHmKCq08PYQQXvRitcTrlATLWJNTF7VH7w6lmCfy0GFwetAbSGQoCvz93-7b0_m3UmtKGboCSRYC5XAq6kFcmzEjwkV7fPgyHqo8Nv8SgSdisHLLbbGfk2ImFl-tCyqF4FAqmdG_hvl9lCgzfhQXRyXauoloKfCDwU3vdmL4zWt2batH0wHuXeRjTwAevqK14Kkn47ogdyFWFs_b2wSkCdlDyDHcfHbI2kTW2blW6aZF3LeIK-sLK3gZA58CkKMakLN7R5FZR72T1_cljLRlA&isca=1
+# PMS_android-master-review Ekran Görüntüleri
+
+<img src="https://user-images.githubusercontent.com/24457063/148695716-857c1fed-f06b-4d02-be9b-358fb04d0b54.jpg" width="400" height="800">[Splash Screen Sayfası](https://user-images.githubusercontent.com/24457063/148695716-857c1fed-f06b-4d02-be9b-358fb04d0b54.jpg)
+----------------------------------------------
+<img src="https://user-images.githubusercontent.com/24457063/148695719-94f98393-177d-4445-833f-4f20c4941a3c.jpg" width="400" height="800">[Kullanıcı Kayıt Sayfası](https://user-images.githubusercontent.com/24457063/148695719-94f98393-177d-4445-833f-4f20c4941a3c.jpg)
+----------------------------------------------
+<img src="https://user-images.githubusercontent.com/24457063/148695726-23f9c1d3-d171-49da-9c43-4af9dc2d2934.jpg" width="400" height="800">[Login](https://user-images.githubusercontent.com/24457063/148695726-23f9c1d3-d171-49da-9c43-4af9dc2d2934.jpg)
+----------------------------------------------
+
+<img src="https://user-images.githubusercontent.com/24457063/148695701-81e54be6-4733-4fc0-9212-65eef3ae00fc.jpg" width="400" height="800">[Yönetilen Proje İstatistik Sayfası](https://user-images.githubusercontent.com/24457063/148695701-81e54be6-4733-4fc0-9212-65eef3ae00fc.jpg)
+----------------------------------------------
+<img src="https://user-images.githubusercontent.com/24457063/148695702-e090b810-39a9-4680-8881-9ae01d995eff.jpg" width="400" height="800">[Yönetilen Görevlerin Kullanıcı Puanlama Sayfası](https://user-images.githubusercontent.com/24457063/148695702-e090b810-39a9-4680-8881-9ae01d995eff.jpg)
+----------------------------------------------
+<img src="https://user-images.githubusercontent.com/24457063/148695706-52e9efb5-ea22-483e-a047-a0c67ef1d181.jpg" width="400" height="800">[Atanmış Olan Görevlerim Sayfası](https://user-images.githubusercontent.com/24457063/148695706-52e9efb5-ea22-483e-a047-a0c67ef1d181.jpg)
+----------------------------------------------
+<img src="https://user-images.githubusercontent.com/24457063/148695713-04587859-317a-4c67-8594-06fc67556f22.jpg" width="400" height="800">[Puan İstatistik Sayfası](https://user-images.githubusercontent.com/24457063/148695713-04587859-317a-4c67-8594-06fc67556f22.jpg)
+----------------------------------------------
