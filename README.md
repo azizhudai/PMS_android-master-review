@@ -1,9 +1,6 @@
 <div align="center">
-	<br>
-	<a href="https://github.com/azizhudai/PMS_android-master-review/header.svg">
-		<img src="header.svg" width="800" height="400" alt="Click to see the source">
-	</a>
-	<br>
+		<img src="header.svg" width="800" height="400">
+
 </div>
 <br>
 <br>
