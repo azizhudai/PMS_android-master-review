@@ -4,8 +4,6 @@
 </div>
 <br>
 <br>
-<br>
-<br>
 
 # Proje Yönetim Sistemi - Tanıtım
 Proje yönetimi kullanıcıların projelerini ekleyerek görevlerinin takibini yaptığı uygulamadır.
@@ -19,13 +17,13 @@ Proje yönetimi kullanıcıların projelerini ekleyerek görevlerinin takibini y
 - Kendisine atanan görevlerin durumunu listeyebilmektedir.
 - Atanmış görevlerini tamamlanmış durumuna çekebilmektedir.
 - Atayan kişi atanan kişiye görev durumu için puan verebilmektedir.
-
-
+<br>
+<br>
 
 # Ekran Görüntüleri
 <div align="center">
 
- Firebase Test Lab - Iu Test
+ Firebase Test Lab - UI Test
 <br>
 <br>
 ![screencapture-console-firebase-google-u-1-project-deneme2-a92ef-testlab-histories-bh-cdc8c062942225a5-matrices-4806656160980596631-executions-bs-3b1d4685a7475510-performance-2022-01-10-01_06_17](https://user-images.githubusercontent.com/24457063/148703119-1ceb4681-03c6-4dee-8f54-a242d8998073.jpg)
