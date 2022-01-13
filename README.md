@@ -10,7 +10,7 @@ Project management is the application where users track their tasks by adding th
 
 - User registration is performed.
 - The user joins the system by logging in.
-- 3 . You can create a project from the tab.
+- You can create a project from the 3rd tab.
 - The task list is displayed by clicking on the relevant project.
 - Adding a task can be performed.
 - User assignment to the task can be done.
